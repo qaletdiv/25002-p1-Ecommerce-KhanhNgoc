@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shop All Products</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./shop-page-style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="../ContactPage/contact-page.html">Contact</a>
+      </nav>
+    </header>
+
+    <div class="filters">
+      <select id="category-filter">
+        <option value="">All Categories</option>
+        <option value="Tops">Tops</option>
+        <option value="Bottoms">Bottoms</option>
+        <option value="Dresses & Skirts">Dresses & Skirts</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Shoes">Shoes</option>
+      </select>
+
+      <select id="sort">
+        <option value="">Sort By</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+        <option value="name-asc">Name A–Z</option>
+      </select>
+    </div>
+
+    <main id="product-list" class="product-grid"></main>
+
+    <script src="../Data/mock-data.js"></script>
+    <script src="./shop-page.js"></script>
+  </body>
+  <footer>
+    <p>© 2025 Pastel Boutique.</p>
+  </footer>
+</html>
