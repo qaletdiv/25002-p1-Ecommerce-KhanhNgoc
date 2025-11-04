@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shop All Products</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./shop-page-style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">Pastel Boutique</div>
+
+      <nav class="nav-left">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="shop-page.html" class="nav-link">Shop</a>
+        <a href="../ContactPage/contact-page.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="../LoginPage/login-page.html" id="login-link" class="nav-link"
+          >Login</a
+        >
+        <a
+          href="../RegisterPage/register-page.html"
+          id="register-link"
+          class="nav-link"
+          >Register</a
+        >
+        <a
+          href="../AccountPage/account.html"
+          id="account-link"
+          class="hidden"
+          class="nav-link"
+          >My Account</a
+        >
+        <a href="#" id="logout-link" class="hidden">Logout</a>
+        <button class="btn" id="cart-btn">Cart</button>
+      </div>
+    </header>
+
+    <div class="filters">
+      <select id="category-filter">
+        <option value="">All Categories</option>
+        <option value="Tops">Tops</option>
+        <option value="Bottoms">Bottoms</option>
+        <option value="Dresses & Skirts">Dresses & Skirts</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Shoes">Shoes</option>
+      </select>
+
+      <select id="sort">
+        <option value="">Sort By</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+        <option value="name-asc">Name A–Z</option>
+      </select>
+    </div>
+
+    <main id="product-list" class="product-grid"></main>
+    <div id="pagination"></div>
+
+    <script src="../Data/mock-data.js"></script>
+
+    <footer>
+      <p>© 2025 Pastel Boutique.</p>
+    </footer>
+    <script src="shop-page.js" type="module"></script>
+  </body>
+</html>
