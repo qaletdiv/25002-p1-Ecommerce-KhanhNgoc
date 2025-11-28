@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Contact Us | Pastel Boutique</title>
+    <title>Order Confirmed | Pastel Boutique</title>
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="./contact-page.css" />
+    <link rel="stylesheet" href="./order-confirmation.css" />
     <link rel="stylesheet" href="../Data/navbar.css" />
   </head>
+
   <body>
     <header class="navbar">
       <div class="logo">Pastel Boutique</div>
@@ -14,7 +15,7 @@
       <nav class="nav-left">
         <a href="../index.html" class="nav-link">Home</a>
         <a href="../ShopPage/shop-page.html" class="nav-link">Shop</a>
-        <a href="./contact-page.html" class="nav-link">Contact</a>
+        <a href="../ContactPage/contact-page.html" class="nav-link">Contact</a>
       </nav>
 
       <div class="nav-right">
@@ -34,35 +35,27 @@
           >My Account</a
         >
         <a href="#" id="logout-link" class="hidden">Logout</a>
+
+        <button class="btn" id="cart-btn">Cart</button>
       </div>
     </header>
     <script type="module" src="../Data/navbar.js"></script>
 
-    <main class="contact-container">
-      <h1>Contact Us</h1>
-      <p>Have questions or feedback? Send us a message!</p>
+    <main class="confirm-container">
+      <div class="confirm-card">
+        <h1>Thank You For Your Purchase! 💖</h1>
+        <p>Your order has been successfully placed.</p>
 
-      <form id="contact-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" required />
+        <div id="order-summary" class="order-summary"></div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" required />
-
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" required />
-
-        <label for="message">Message:</label>
-        <textarea id="message" rows="6" required></textarea>
-
-        <button type="submit">Submit</button>
-      </form>
+        <button id="back-to-shop" class="btn">Back to Shop</button>
+      </div>
     </main>
 
     <footer>
-      <p>© 2025 Pastel Boutique. All rights reserved.</p>
+      <p>© 2025 Pastel Boutique.</p>
     </footer>
 
-    <script src="./contact-page.js"></script>
+    <script src="./order-confirmation.js"></script>
   </body>
 </html>

@@ -1,0 +1,105 @@
+.checkout-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.checkout-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.shipping-box,
+.summary-box {
+  flex: 1;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.shipping-box h2,
+.summary-box h2 {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+#shipping-form input,
+#shipping-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.confirm-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .checkout-wrapper {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .shipping-box,
+  .summary-box {
+    padding: 20px;
+  }
+
+  #shipping-form input,
+  #shipping-form textarea {
+    padding: 8px;
+  }
+
+  .summary-total {
+    font-size: 16px;
+  }
+
+  .confirm-btn {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .checkout-container {
+    width: 95%;
+    margin: 30px auto;
+  }
+
+  .shipping-box,
+  .summary-box {
+    padding: 15px;
+  }
+
+  #shipping-form input,
+  #shipping-form textarea {
+    padding: 7px;
+  }
+
+  .summary-total {
+    font-size: 15px;
+  }
+
+  .confirm-btn {
+    width: 100%;
+  }
+}

@@ -35,3 +35,37 @@
 .register-container button:hover {
   background-color: #ff9ca6;
 }
+
+@media screen and (max-width: 800px) {
+  .register-container {
+    max-width: 350px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .register-container input {
+    padding: 8px;
+  }
+
+  .register-container button {
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .register-container {
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  .register-container input,
+  .register-container button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .register-container button {
+    padding: 10px 0;
+  }
+}

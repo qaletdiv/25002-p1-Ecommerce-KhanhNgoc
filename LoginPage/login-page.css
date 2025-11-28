@@ -35,3 +35,37 @@
 .login-container button:hover {
   background-color: #ff9ca6;
 }
+
+@media screen and (max-width: 800px) {
+  .login-container {
+    max-width: 350px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .login-container input {
+    padding: 8px;
+  }
+
+  .login-container button {
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  .login-container input,
+  .login-container button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .login-container button {
+    padding: 10px 0;
+  }
+}

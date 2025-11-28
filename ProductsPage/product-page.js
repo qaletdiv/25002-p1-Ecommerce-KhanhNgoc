@@ -43,7 +43,7 @@ function renderProductDetail(p) {
 
     const qty = parseInt(document.getElementById("quantity").value);
     addToCart(p.id, qty);
-    alert("Product added to cart!");
+    window.location.href = "../CartPage/cart-page.html";
   });
 }
 
@@ -74,3 +74,9 @@ function renderRelated(currentProduct) {
 function viewDetail(id) {
   window.location.href = `../ProductsPage/products-page.html?id=${id}`;
 }
+
+const cartBtn = document.getElementById("cart-btn");
+
+cartBtn.addEventListener("click", () => {
+  window.location.href = "../CartPage/cart-page.html";
+});

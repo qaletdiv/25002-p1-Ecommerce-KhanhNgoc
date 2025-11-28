@@ -122,3 +122,88 @@
   font-weight: bold;
   font-size: 1rem;
 }
+
+@media screen and (max-width: 800px) {
+  #product-detail {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .product-gallery img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .quantity-select input {
+    width: 50px;
+  }
+
+  .related-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .related-item img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .detail-container {
+    padding: 15px;
+    margin: 30px auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .detail-container {
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  #product-detail {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .product-gallery img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+  }
+
+  .product-info h1 {
+    font-size: 1.4rem;
+  }
+
+  .product-info .price {
+    font-size: 1.2rem;
+  }
+
+  .quantity-select input {
+    width: 45px;
+    padding: 4px;
+  }
+
+  #add-to-cart {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .related-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .related-item {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .related-item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+}

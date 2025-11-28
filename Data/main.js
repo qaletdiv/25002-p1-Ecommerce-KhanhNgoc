@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const registerLink = document.getElementById("register-link");
   const accountLink = document.getElementById("account-link");
   const logoutLink = document.getElementById("logout-link");
-  const cartBtn = document.getElementById("cart-btn");
+  // const cartBtn = document.getElementById("cart-btn");
 
   const renderProducts = (list) => {
     if (!list.length) {
@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <img src="${p.image}" alt="${p.name}">
           <h3>${p.name}</h3>
           <p>$${p.price.toFixed(2)}</p>
-          <button class="btn add-to-cart">Add to Cart</button>
+          <a href="../ProductsPage/products-page.html?id=${
+            p.id
+          }" class="btn">View</a>
         </div>`
       )
       .join("");
@@ -91,13 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
       alert(`Added ${productName} to your cart!`);
     }
   });
+});
 
-  cartBtn.addEventListener("click", () => {
-    if (!loggedIn) {
-      alert("Please log in to view your cart.");
-      window.location.href = "./LoginPage/login-page.html";
-    } else {
-      window.location.href = "./CartPage/cart-page.html";
-    }
-  });
+const cartBtn = document.getElementById("cart-btn");
+
+cartBtn.addEventListener("click", () => {
+  window.location.href = "../CartPage/cart-page.html";
 });

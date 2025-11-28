@@ -41,7 +41,7 @@ function renderPagination() {
             : ""
         }>
         &lt;</button>
-   <span style="margin:0 10px; color:#555;">Trang ${currentPage} / ${totalPages}</span>
+   <span style="margin:0 10px; color:#555;">Page ${currentPage} / ${totalPages}</span>
       <button id="nextBtn"
         style="background:#fcbaba; border:none; padding:6px 10px; border-radius:8px; color:#fff;"
         ${
@@ -89,4 +89,9 @@ sortSelect.addEventListener("change", () => {
 });
 
 renderProducts(currentPage);
-window.location.href = `../ProductsPage/products-page.html?id=${id}`;
+
+const cartBtn = document.getElementById("cart-btn");
+
+cartBtn.addEventListener("click", () => {
+  window.location.href = "../CartPage/cart-page.html";
+});

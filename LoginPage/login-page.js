@@ -19,11 +19,16 @@ form.addEventListener("submit", (e) => {
   }
 
   localStorage.setItem("currentUser", JSON.stringify(foundUser));
+  localStorage.setItem("loggedIn", "true");
 
   alert(`Welcome back!, ${foundUser.name}!`);
 
   const previousPage = document.referrer;
-  if (previousPage && !previousPage.includes("login-page.html")) {
+  if (
+    previousPage &&
+    !previousPage.includes("login-page.html") &&
+    !previousPage.includes("register-page.html")
+  ) {
     window.location.href = previousPage;
   } else {
     window.location.href = "../index.html";
