@@ -29,3 +29,7 @@ if (userOrders.length === 0) {
     )
     .join("");
 }
+const cartBtn = document.getElementById("cart-btn");
+cartBtn.addEventListener("click", () => {
+  window.location.href = "../CartPage/cart-page.html";
+});

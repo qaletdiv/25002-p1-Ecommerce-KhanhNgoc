@@ -5,12 +5,15 @@
   background-color: #fff8f8;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
+  transition: all 0.3s ease;
 }
 
 #product-detail {
   display: flex;
   gap: 40px;
   align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .product-gallery img {
@@ -19,15 +22,18 @@
   object-fit: cover;
   border-radius: 12px;
   border: 2px solid #ffd6d6;
+  transition: all 0.3s ease;
 }
 
 .product-info {
   flex: 1;
+  min-width: 250px;
 }
 
 .product-info h1 {
   color: #ff6b6b;
   margin-bottom: 10px;
+  font-size: 1.8rem;
 }
 
 .product-info .price {
@@ -46,6 +52,7 @@
   border-radius: 8px;
   border: 1px solid #ffc0cb;
   text-align: center;
+  font-size: 1rem;
 }
 
 #add-to-cart {
@@ -60,6 +67,7 @@
 
 #add-to-cart:hover {
   background-color: #ff8fa3;
+  transform: scale(1.03);
 }
 
 .related-section {
@@ -131,7 +139,7 @@
   }
 
   .product-gallery img {
-    width: 100%;
+    width: 80%;
     max-width: 300px;
     height: auto;
   }

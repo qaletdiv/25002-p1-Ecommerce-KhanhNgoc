@@ -5,12 +5,14 @@
   background-color: #fff8f8;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
+  font-family: "Poppins", sans-serif;
 }
 
 .account-container h1 {
   color: #ff6b6b;
   margin-bottom: 30px;
   text-align: center;
+  font-weight: 600;
 }
 
 .personal-info,
@@ -28,6 +30,7 @@
 .personal-info p {
   margin: 8px 0;
   font-size: 1.1rem;
+  color: #444;
 }
 
 .order-history table {
@@ -48,6 +51,7 @@
 .order-history th {
   background-color: #ffb6c1;
   color: white;
+  font-weight: 500;
 }
 
 .order-history tbody tr:hover {
@@ -57,6 +61,7 @@
 .order-history td {
   color: #444;
 }
+
 @media screen and (max-width: 800px) {
   .account-container {
     padding: 15px 20px;
@@ -94,21 +99,10 @@
     font-size: 0.95rem;
   }
 
-  .order-history table,
-  .order-history th,
-  .order-history td {
+  .order-history table {
     display: block;
     width: 100%;
-  }
-
-  .order-history th {
-    text-align: left;
-  }
-
-  .order-history td {
-    text-align: left;
-    padding-left: 0;
-    border-bottom: 1px solid #ffd6d6;
-    margin-bottom: 10px;
+    border-radius: 12px;
+    overflow: hidden;
   }
 }

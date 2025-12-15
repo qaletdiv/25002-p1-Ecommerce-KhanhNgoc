@@ -5,29 +5,31 @@ if (!user) {
 }
 
 const products = JSON.parse(localStorage.getItem("products")) || [];
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cart = JSON.parse(localStorage.getItem(`cart_${user.id}`)) || [];
 
 if (cart.length === 0) {
   alert("Your cart is empty.");
+  window.location.href = "../CartPage/cart-page.html";
 }
 
 const summaryBox = document.getElementById("summary-items");
 const totalBox = document.getElementById("summary-total");
-
 function renderSummary() {
   let html = "";
   let total = 0;
 
   cart.forEach((item) => {
-    const product = products.find((p) => p.id === item.id);
+    const product = products.find((p) => p.id == item.id);
     if (!product) return;
 
-    const subtotal = product.price * item.qty;
+    const price = Number(product.price) || 0;
+    const qty = Number(item.qty || item.quantity) || 0;
+    const subtotal = price * qty;
     total += subtotal;
 
     html += `
       <div class="summary-item">
-        <span>${product.name} (x${item.qty})</span>
+        <span>${product.name} (x${qty})</span>
         <span>$${subtotal.toLocaleString()}</span>
       </div>
     `;
@@ -36,19 +38,19 @@ function renderSummary() {
   summaryBox.innerHTML = html;
   totalBox.textContent = "$" + total.toLocaleString();
 }
-
 renderSummary();
 
 document.getElementById("shipping-form").addEventListener("submit", (e) => {
   e.preventDefault();
-
   const orderItems = cart.map((item) => {
-    const product = products.find((p) => p.id === item.id);
+    const product = products.find((p) => p.id == item.id);
+    const price = Number(product?.price) || 0;
+    const qty = Number(item.qty || item.quantity) || 0;
     return {
       id: item.id,
-      name: product ? product.name : "Unknown Product",
-      price: product ? product.price : 0,
-      qty: item.qty,
+      name: product?.name || "Unknown Product",
+      price: price,
+      qty: qty,
     };
   });
 
@@ -68,7 +70,12 @@ document.getElementById("shipping-form").addEventListener("submit", (e) => {
   localStorage.setItem("orders", JSON.stringify(orders));
   localStorage.setItem("recentOrder", JSON.stringify(order));
 
-  localStorage.removeItem("cart");
+  localStorage.removeItem(`cart_${user.id}`);
 
   window.location.href = "../ConfirmPage/order-confirmation.html";
+});
+
+const cartBtn = document.getElementById("cart-btn");
+cartBtn.addEventListener("click", () => {
+  window.location.href = "../CartPage/cart-page.html";
 });

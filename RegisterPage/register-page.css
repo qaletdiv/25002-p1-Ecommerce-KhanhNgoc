@@ -6,11 +6,13 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2);
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .register-container h2 {
   color: #ff6b6b;
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 .register-container input {
@@ -20,6 +22,14 @@
   padding: 10px;
   border: 1px solid #fcbaba;
   border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.register-container input:focus {
+  border-color: #ff6b6b;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
 }
 
 .register-container button {
@@ -29,11 +39,14 @@
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: 1000;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .register-container button:hover {
   background-color: #ff9ca6;
+  transform: scale(1.03);
 }
 
 @media screen and (max-width: 800px) {
@@ -44,11 +57,13 @@
   }
 
   .register-container input {
-    padding: 8px;
+    padding: 9px;
+    font-size: 0.95rem;
   }
 
   .register-container button {
-    padding: 8px 16px;
+    padding: 9px 18px;
+    font-size: 0.95rem;
   }
 }
 
@@ -67,5 +82,9 @@
 
   .register-container button {
     padding: 10px 0;
+  }
+
+  .register-container h2 {
+    font-size: 1.5rem;
   }
 }

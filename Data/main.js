@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const registerLink = document.getElementById("register-link");
   const accountLink = document.getElementById("account-link");
   const logoutLink = document.getElementById("logout-link");
-  // const cartBtn = document.getElementById("cart-btn");
 
   const renderProducts = (list) => {
     if (!list.length) {
@@ -71,10 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
       logoutLink.classList.add("hidden");
     }
   };
-
   logoutLink.addEventListener("click", () => {
-    localStorage.setItem("loggedIn", "false");
     loggedIn = false;
+    localStorage.setItem("loggedIn", "false");
+    localStorage.removeItem("currentUser");
     updateNavbar();
     alert("You have logged out.");
   });

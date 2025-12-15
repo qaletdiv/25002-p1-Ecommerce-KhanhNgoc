@@ -3,40 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <title>Shop All Products</title>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="./shop-page-style.css" />
-    <link rel="stylesheet" href="../Data/navbar.css" />
   </head>
   <body>
-    <header class="navbar">
-      <div class="logo">Pastel Boutique</div>
+    <header>
+      <nav class="navbar">
+        <div class="logo">Pastel Boutique</div>
 
-      <nav class="nav-left">
-        <a href="../index.html" class="nav-link">Home</a>
-        <a href="shop-page.html" class="nav-link">Shop</a>
-        <a href="../ContactPage/contact-page.html" class="nav-link">Contact</a>
+        <div class="nav-left">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="shop-page.html" class="nav-link">Shop</a>
+          <a href="../ContactPage/contact-page.html" class="nav-link"
+            >Contact</a
+          >
+        </div>
+
+        <div class="nav-right">
+          <a
+            href="../LoginPage/login-page.html"
+            id="login-link"
+            class="nav-link"
+            >Login</a
+          >
+          <a
+            href="../RegisterPage/register-page.html"
+            id="register-link"
+            class="nav-link"
+            >Register</a
+          >
+          <a
+            href="../AccountPage/account.html"
+            id="account-link"
+            class="nav-link hidden"
+            >My Account</a
+          >
+          <a href="#" id="logout-link" class="nav-link hidden">Logout</a>
+          <button id="cart-btn" class="btn">Cart</button>
+        </div>
       </nav>
-
-      <div class="nav-right">
-        <a href="../LoginPage/login-page.html" id="login-link" class="nav-link"
-          >Login</a
-        >
-        <a
-          href="../RegisterPage/register-page.html"
-          id="register-link"
-          class="nav-link"
-          >Register</a
-        >
-        <a
-          href="../AccountPage/account.html"
-          id="account-link"
-          class="hidden"
-          class="nav-link"
-          >My Account</a
-        >
-        <a href="#" id="logout-link" class="hidden">Logout</a>
-        <button class="btn" id="cart-btn">Cart</button>
-      </div>
     </header>
     <script type="module" src="../Data/navbar.js"></script>
 
@@ -50,8 +55,15 @@
         <option value="Shoes">Shoes</option>
       </select>
 
+      <select id="price-filter">
+        <option value="">All Price</option>
+        <option value="0-50">Under $50</option>
+        <option value="50-100">$50 – $100</option>
+        <option value="100-999">Above $100</option>
+      </select>
+
       <select id="sort">
-        <option value="">Sort By</option>
+        <option value="default">Sort By</option>
         <option value="price-asc">Price ↑</option>
         <option value="price-desc">Price ↓</option>
         <option value="name-asc">Name A–Z</option>

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -5,40 +9,20 @@ body {
   color: #444;
 }
 
-.navbar {
-  background-color: #ffd6d6;
-  padding: 10px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-left,
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.nav-link {
-  color: #444;
+a {
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-link:hover {
-  color: #ff8c8c;
+  color: inherit;
 }
 
 .btn {
   background-color: #fcbaba;
+  color: #fff;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.3s;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn:hover {
@@ -47,6 +31,37 @@ body {
 
 .hidden {
   display: none;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #ffd6d6;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ff8c8c;
 }
 
 .hero {
@@ -62,19 +77,32 @@ body {
   margin-bottom: 10px;
 }
 
+.hero p {
+  font-size: 1rem;
+}
+
 .search-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
   gap: 10px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  max-width: 500px;
 }
 
 .search-bar input {
-  width: 300px;
+  flex: 1 1 200px;
+  max-width: 350px;
+  min-width: 150px;
   padding: 8px 12px;
   border-radius: 20px;
   border: 1px solid #fcbaba;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  border-radius: 20px;
 }
 
 .product-grid {
@@ -87,9 +115,9 @@ body {
 .product-card {
   background-color: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(252, 186, 186, 0.2);
   padding: 14px;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(252, 186, 186, 0.2);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -109,63 +137,102 @@ body {
 footer {
   background-color: #ffd6d6;
   text-align: center;
-  padding: 10px 0;
+  padding: 15px 0;
   margin-top: 40px;
 }
 
-.btn {
-  background-color: #fcbaba;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-weight: 500;
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 1025px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .nav-left,
   .nav-right {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .search-bar {
+    flex-direction: row;
     gap: 10px;
+  }
+}
+@media screen and (max-width: 1024px) and (min-width: 801px) {
+  .navbar {
+    padding: 12px 24px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .nav-left,
+  .nav-right {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .search-bar {
+    max-width: 420px;
+    gap: 8px;
   }
 
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 15px;
+    padding: 20px;
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 800px) and (min-width: 601px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
   }
 
   .search-bar {
-    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
     gap: 8px;
   }
-
-  .search-bar input {
-    width: 100%;
-  }
 }
-
 @media screen and (max-width: 600px) {
   .navbar {
-    padding: 8px 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
   }
 
   .product-grid {
     grid-template-columns: 1fr;
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .hero {
-    padding: 40px 15px;
+    padding: 12px;
+    gap: 12px;
   }
 }

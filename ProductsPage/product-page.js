@@ -3,15 +3,32 @@ const productId = params.get("id");
 
 const products = JSON.parse(localStorage.getItem("products")) || [];
 const product = products.find((p) => p.id == productId);
-
 const detailContainer = document.getElementById("product-detail");
 const relatedContainer = document.getElementById("related-list");
 
-if (!product) {
-  detailContainer.innerHTML = "<p>Product not found.</p>";
-} else {
-  renderProductDetail(product);
-  renderRelated(product);
+function renderRelated(currentProduct) {
+  const related = products
+    .filter(
+      (p) =>
+        p.category === currentProduct.category && p.id !== currentProduct.id
+    )
+    .slice(0, 4);
+
+  if (related.length === 0) {
+    relatedContainer.innerHTML = "<p>No related products found.</p>";
+    return;
+  }
+  relatedContainer.innerHTML = related
+    .map(
+      (r) => `
+      <div class="related-item" onclick="viewDetail(${r.id})">
+        <img src="${r.image}" alt="${r.name}" />
+        <h4>${r.name}</h4>
+        <p class="price">$${r.price.toLocaleString()}</p>
+      </div>
+    `
+    )
+    .join("");
 }
 
 function renderProductDetail(p) {
@@ -33,7 +50,14 @@ function renderProductDetail(p) {
     </div>
   `;
 
-  document.getElementById("add-to-cart").addEventListener("click", () => {
+  const quantityInput = document.getElementById("quantity");
+  const addBtn = document.getElementById("add-to-cart");
+
+  quantityInput.addEventListener("input", () => {
+    if (quantityInput.value < 1) quantityInput.value = 1;
+  });
+
+  addBtn.addEventListener("click", () => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     if (!user) {
       alert("Please log in to add items to your cart.");
@@ -41,36 +65,34 @@ function renderProductDetail(p) {
       return;
     }
 
-    const qty = parseInt(document.getElementById("quantity").value);
-    addToCart(p.id, qty);
+    const qty = parseInt(quantityInput.value);
+    addToCart(user.id, p.id, qty);
+    alert("Added to cart!");
     window.location.href = "../CartPage/cart-page.html";
   });
 }
 
-function addToCart(productId, qty) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existing = cart.find((item) => item.id === productId);
-  if (existing) existing.qty += qty;
-  else cart.push({ id: productId, qty });
-  localStorage.setItem("cart", JSON.stringify(cart));
+function addToCart(userId, productId, quantity) {
+  const cartKey = `cart_${userId}`;
+  const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+  const existing = cart.find((item) => item.id == productId);
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push({ id: productId, quantity });
+  }
+
+  localStorage.setItem(cartKey, JSON.stringify(cart));
 }
 
-function renderRelated(currentProduct) {
-  const related = products
-    .filter((p) => p.id !== currentProduct.id)
-    .slice(0, 4);
-  relatedContainer.innerHTML = related
-    .map(
-      (r) => `
-        <div class="related-item" onclick="viewDetail(${r.id})">
-          <img src="${r.image}" alt="${r.name}" />
-          <h4>${r.name}</h4>
-          <p class="price">$${r.price.toLocaleString()}</p>
-        </div>
-      `
-    )
-    .join("");
+if (!product) {
+  detailContainer.innerHTML = "<p>Product not found.</p>";
+} else {
+  renderProductDetail(product);
+  renderRelated(product);
 }
+
 function viewDetail(id) {
   window.location.href = `../ProductsPage/products-page.html?id=${id}`;
 }

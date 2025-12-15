@@ -1,7 +1,7 @@
 const products = JSON.parse(localStorage.getItem("products")) || [];
-
 const container = document.getElementById("product-list");
 const categoryFilter = document.getElementById("category-filter");
+const priceFilter = document.getElementById("price-filter");
 const sortSelect = document.getElementById("sort");
 const pagination = document.getElementById("pagination");
 
@@ -12,7 +12,6 @@ function renderProducts(page = 1) {
   const start = (page - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   const pageItems = filteredProducts.slice(start, end);
-
   container.innerHTML = pageItems
     .map(
       (p) => `
@@ -68,30 +67,38 @@ function renderPagination() {
   };
 }
 
-categoryFilter.addEventListener("change", () => {
-  const value = categoryFilter.value;
-  filteredProducts = value
-    ? products.filter((p) => p.category === value)
-    : [...products];
-  currentPage = 1;
-  renderProducts();
-});
+function filtersAndSort() {
+  let result = [...products];
 
-sortSelect.addEventListener("change", () => {
-  const value = sortSelect.value;
-  if (value === "price-asc") filteredProducts.sort((a, b) => a.price - b.price);
-  if (value === "price-desc")
-    filteredProducts.sort((a, b) => b.price - a.price);
-  if (value === "name-asc")
-    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+  if (categoryFilter.value) {
+    result = result.filter((p) => p.category === categoryFilter.value);
+  }
+
+  if (priceFilter.value) {
+    const [min, max] = priceFilter.value.split("-").map(Number);
+    result = result.filter((p) => p.price >= min && p.price <= max);
+  }
+
+  const sortValue = sortSelect.value;
+  if (sortValue === "price-asc") {
+    result.sort((a, b) => a.price - b.price);
+  } else if (sortValue === "price-desc") {
+    result.sort((a, b) => b.price - a.price);
+  } else if (sortValue === "name-asc") {
+    result.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  filteredProducts = result;
   currentPage = 1;
+
   renderProducts();
-});
+}
+categoryFilter.addEventListener("change", filtersAndSort);
+priceFilter.addEventListener("change", filtersAndSort);
+sortSelect.addEventListener("change", filtersAndSort);
 
 renderProducts(currentPage);
-
 const cartBtn = document.getElementById("cart-btn");
-
 cartBtn.addEventListener("click", () => {
   window.location.href = "../CartPage/cart-page.html";
 });

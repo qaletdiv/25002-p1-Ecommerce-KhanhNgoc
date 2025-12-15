@@ -26,3 +26,7 @@ form.addEventListener("submit", (e) => {
   alert("Thank you! Your message has been submitted.");
   form.reset();
 });
+const cartBtn = document.getElementById("cart-btn");
+cartBtn.addEventListener("click", () => {
+  window.location.href = "../CartPage/cart-page.html";
+});
